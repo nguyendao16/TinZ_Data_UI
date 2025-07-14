@@ -2,7 +2,7 @@ document.getElementById('send-button').addEventListener('click', function() {
   const message = document.getElementById('message').value;
 
   if (message.trim() === '') {
-    alert('Vui lòng nhập tin nhắn!');
+    document.getElementById('response-box').textContent = 'Vui lòng nhập tin nhắn!';
     return;
   }
 
@@ -13,16 +13,13 @@ document.getElementById('send-button').addEventListener('click', function() {
     },
     body: JSON.stringify({ message })
   })
-  .then(response => {
-    if (response.ok) {
-      alert('Tin nhắn đã được gửi!');
-      document.getElementById('message').value = ''; // Clear the input
-    } else {
-      alert('Có lỗi xảy ra khi gửi tin nhắn.');
-    }
+  .then(response => response.text()) // Đọc phản hồi dưới dạng text
+  .then(data => {
+    document.getElementById('response-box').textContent = data; // Hiển thị phản hồi trong response-box
+    document.getElementById('message').value = ''; // Xóa nội dung tin nhắn
   })
   .catch(error => {
     console.error('Error:', error);
-    alert('Không thể kết nối đến webhook.');
+    document.getElementById('response-box').textContent = 'Không thể kết nối đến webhook.';
   });
 });

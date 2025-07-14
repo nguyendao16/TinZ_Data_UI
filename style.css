@@ -70,3 +70,16 @@ button:hover {
 button:active {
   transform: translateY(0); /* Hiệu ứng khi nhấn */
 }
+
+.response-box {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #f1f8e9; /* Màu xanh lá cây nhạt */
+  border: 1px solid #81c784; /* Viền xanh lá cây */
+  border-radius: 8px;
+  font-size: 16px;
+  color: #2e7d32; /* Màu chữ xanh lá cây đậm */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  word-wrap: break-word;
+}
